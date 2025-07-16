@@ -21,6 +21,7 @@ This project uses a Convolutional Neural Network (CNN) to predict periodontal (g
 
 ## Dataset Structure
 dataset/
+
 │
 ├── penyakit-periodontal/ # Images with periodontal disease
 └── penyakit-non-periodontal/ # Images without the disease
