@@ -1,108 +1,50 @@
-# Periodontal-Disease-Prediction
-Periodontal Disease Prediction with TensorFlow
-
-This project focuses on building a convolutional neural network (CNN) to predict periodontal diseases using panoramic dental images. The model employs K-Fold Cross-Validation for robust evaluation and achieves binary classification between periodontal and non-periodontal conditions.
-
+# Periodontal Disease Prediction
+This project uses a Convolutional Neural Network (CNN) to predict periodontal (gum) disease from panoramic dental images. It applies **K-Fold Cross-Validation** to test model performance properly and performs **binary classification** (disease or no disease).
 
 ---
 
-Features
-
-Preprocessing: Image resizing, normalization, and preprocessing for VGG16 compatibility.
-
-Model Architecture: A CNN with multiple convolutional and pooling layers, followed by dense layers for classification.
-
-K-Fold Cross-Validation: Splits the data into 5 folds to ensure unbiased evaluation.
-
-Metrics: Reports Accuracy, Precision, and Recall for each fold.
-
-Visualization: Plots training and validation accuracy and loss over epochs.
-
-
+## Project Files
+- `model.py` – Trains the CNN model using K-Fold cross-validation and saves the best model.
+- `predict.py` – Loads the saved model and predicts the class (periodontal or not) for a new image.
+- `app.py` – Flask-based web app that lets users upload a dental image and get a prediction.
 
 ---
 
-
-Dataset Structure:
-
-penyakit-periodontal/ (Periodontal disease images)
-
-penyakit-non-periodontal/ (Non-periodontal images)
-
-
-Input Size: 128x128 pixels, RGB.
-
-
+## Features
+- **Preprocessing**: All images are resized to 128x128 and normalized for VGG16 compatibility.
+- **CNN Architecture**: Built with convolutional, pooling, and dense layers.
+- **K-Fold Cross-Validation**: Data is split into 5 folds for better model evaluation.
+- **Evaluation Metrics**: Accuracy, Precision, and Recall are calculated for each fold.
+- **Training Visualization**: Plots for accuracy and loss over epochs.
 
 ---
 
-Model Details
+## Dataset Structure
+dataset/
+│
+├── penyakit-periodontal/ # Images with periodontal disease
+└── penyakit-non-periodontal/ # Images without the disease
 
-Layers:
-
-Convolutional layers with ReLU activation
-
-Max pooling layers
-
-Dense layers with Dropout for regularization
-
-
-Optimizer: Adam
-
-Loss Function: Binary Crossentropy
-
-Activation Function: Sigmoid for binary classification.
-
-
+- All images are RGB and resized to **128x128 pixels**.
 
 ---
 
-Installation and Usage
-
-Prerequisites
-
-Python 3.8+
-
-TensorFlow 2.x
-
-NumPy
-
-Matplotlib
-
-scikit-learn
-
-pandas
+## Model Details
+- **Layers**: Conv2D → ReLU → MaxPooling → Dense → Dropout → Output
+- **Optimizer**: Adam
+- **Loss Function**: Binary Crossentropy
+- **Final Activation**: Sigmoid (for binary output)
 
 ---
 
-Results
+## Installation & Usage
 
-K-Fold Cross-Validation
+### 1. Install Required Libraries
+pip install tensorflow numpy matplotlib scikit-learn pandas flask
+### 2. Train the model
+python model.py
+### 3. Predict for a new image
+python predict.py --image path_to_image.jpg
+### 4. Run web app
+python app.py
 
-Average Accuracy: 0.6900
-
-Average Precision: 0.6662
-
-Average Recall: 0.7667
-
-
-Training history plots for Accuracy and Loss over epochs are also generated.
-
-
----
-
-Future Work
-
-Augment the dataset with more samples.
-
-Explore pre-trained models for transfer learning.
-
-Deploy the model using Flask/Django for real-world applications.
-
-
-
----
-
-License
-
-This project is licensed under the MIT License.
